@@ -23,12 +23,12 @@ try:
 except:
 	data = {}
 
-if data[name]:
+if name in data:
 	tmp = data[name]
 	tmp[result] = value
 	data[name] =  tmp
 else:
-	data[name] = {{result :value }}
+	data[name] = {result :value }
 
 json_data = json.dumps(data)
 
