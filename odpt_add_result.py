@@ -2,6 +2,7 @@
 import json
 import pickle
 import sys
+import datetime
 
 def usage():
 	print "Script to add test result in odpt_results.dat"
@@ -18,17 +19,25 @@ value = sys.argv[3]
 
 fname = "odpt_results.dat"
 
+def get_utc_time():
+	d = datetime.datetime.utcnow()
+	epoch = datetime.datetime(1970,1,1)
+	t = (d - epoch).total_seconds()
+	return t
+
 try:
 	data = pickle.load( open(fname, "rb" ) )
 except:
-	data = {}
+	data = []
 
-if name in data:
-	tmp = data[name]
-	tmp[result] = value
-	data[name] =  tmp
-else:
-	data[name] = {result :value }
+newdata = {}
+
+tmp = {}
+tmp[result] = value
+tmp["time"] = get_utc_time()
+newdata[name] = tmp
+
+data.append(newdata)
 
 json_data = json.dumps(data)
 

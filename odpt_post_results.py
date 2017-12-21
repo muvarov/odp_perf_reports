@@ -6,8 +6,8 @@ import urllib2
 import datetime
 
 url = sys.argv[1]
-author = sys.argv[2]
-git_commit = sys.argv[3]
+git_commit = sys.argv[2]
+author = sys.argv[3]
 
 fname = "odpt_results.dat"
 
