@@ -42,4 +42,4 @@ for r in data:
 			elif "TX" in generator:
 				TX = generator["TX"]
 	print RX,",",
-	print TX,
+	print TX
